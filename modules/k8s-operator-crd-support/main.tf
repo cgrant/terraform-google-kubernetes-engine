@@ -37,8 +37,8 @@ data "google_client_config" "default" {
 }
 
 module "k8sop_manifest" {
-  source            = "github.com/terraform-google-modules/terraform-google-gcloud?ref=check-binaries-installed"
-  # version           = "~> 1.0"
+  source        = "terraform-google-modules/gcloud/google"
+  version       = "~> 1.2"
   enabled       = local.should_download_manifest
   skip_download = var.skip_gcloud_download
 
@@ -50,8 +50,8 @@ module "k8sop_manifest" {
 
 
 module "k8s_operator" {
-  source            = "github.com/terraform-google-modules/terraform-google-gcloud?ref=check-binaries-installed"
-  # version           = "~> 1.0"
+  source                = "terraform-google-modules/gcloud/google"
+  version               = "~> 1.2"
   module_depends_on     = [module.k8sop_manifest.wait, data.google_client_config.default.project, data.google_container_cluster.primary.name]
   additional_components = ["kubectl"]
   skip_download         = var.skip_gcloud_download
@@ -70,8 +70,8 @@ resource "tls_private_key" "k8sop_creds" {
 }
 
 module "k8sop_creds_secret" {
-  source            = "github.com/terraform-google-modules/terraform-google-gcloud?ref=check-binaries-installed"
-  # version           = "~> 1.0"
+  source                = "terraform-google-modules/gcloud/google"
+  version               = "~> 1.2"
   module_depends_on     = [module.k8s_operator.wait]
   additional_components = ["kubectl"]
   skip_download         = var.skip_gcloud_download
@@ -98,8 +98,8 @@ data "template_file" "k8sop_config" {
 }
 
 module "k8sop_config" {
-  source            = "github.com/terraform-google-modules/terraform-google-gcloud?ref=check-binaries-installed"
-  # version           = "~> 1.0"
+  source                = "terraform-google-modules/gcloud/google"
+  version               = "~> 1.2"
   module_depends_on     = [module.k8s_operator.wait, module.k8sop_creds_secret.wait]
   additional_components = ["kubectl"]
   skip_download         = var.skip_gcloud_download

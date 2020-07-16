@@ -28,8 +28,8 @@ data "google_client_config" "default" {
 }
 
 module "asm_install" {
-  source            = "github.com/terraform-google-modules/terraform-google-gcloud?ref=check-binaries-installed"
-  # version           = "~> 1.0"
+  source            = "terraform-google-modules/gcloud/google"
+  version           = "~> 1.2"
   module_depends_on = [var.cluster_endpoint]
 
   platform                          = "linux"
@@ -66,7 +66,7 @@ resource "google_service_account_key" "gke_hub_key" {
 
 module "gke_hub_registration" {
   source  = "terraform-google-modules/gcloud/google"
-  version = "~> 1.0"
+  version = "~> 1.2"
 
   platform                          = "linux"
   gcloud_sdk_version                = var.gcloud_sdk_version

@@ -59,7 +59,7 @@ resource "kubernetes_service_account" "main" {
 
 module "annotate-sa" {
   source  = "terraform-google-modules/gcloud/google"
-  version = "~> 0.5"
+  version = "~> 1.2"
 
   platform              = "linux"
   additional_components = ["kubectl"]
