@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Extending the adopted spec, each change should have a link to its corresponding pull request appended.
 
+## [10.1.0](https://www.github.com/terraform-google-modules/terraform-google-kubernetes-engine/compare/v10.0.0...v10.1.0) (2020-07-16)
+
+
+### Features
+
+* Add support for enabling master_global_access, which is turned on by default. ([#601](https://www.github.com/terraform-google-modules/terraform-google-kubernetes-engine/issues/601)) ([8a9f904](https://www.github.com/terraform-google-modules/terraform-google-kubernetes-engine/commit/8a9f9041c8f18ff7a873873e9b19e03dcdfe7d2a))
+
 ## [10.0.0](https://www.github.com/terraform-google-modules/terraform-google-kubernetes-engine/compare/v9.4.0...v10.0.0) (2020-07-10)
 
 
